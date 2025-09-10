@@ -13,31 +13,53 @@ type Props = {
 const ComplianceForm = ({ onReportGenerated }: Props) => {
   const [businessSize, setBusinessSize] = useState<number>(50);
   const [seatingCapacity, setSeatingCapacity] = useState<number>(20);
-  const [customFields, setCustomFields] = useState<CustomField[]>([]);
+  const [customFields, setCustomFields] = useState<CustomField[]>([
+    { id: Date.now(), key: "", value: "" },
+  ]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleAddField = () => {
-    setCustomFields((prevFields) => [...prevFields, { id: Date.now(), key: "", value: "" }]);
+    setCustomFields((prevFields) => [
+      ...prevFields,
+      { id: Date.now(), key: "", value: "" },
+    ]);
   };
 
-  const handleFieldChange = (index: number, field: "key" | "value", value: string) => {
-    setCustomFields((prevFields) => prevFields.map((f, i) => (i === index ? { ...f, [field]: value } : f)));
+  const handleFieldChange = (
+    index: number,
+    field: "key" | "value",
+    value: string,
+  ) => {
+    setCustomFields((prevFields) =>
+      prevFields.map((f, i) => (i === index ? { ...f, [field]: value } : f)),
+    );
   };
 
   const handleRemoveField = (index: number) => {
-    setCustomFields((prevFields) => prevFields.filter((_, i) => i !== index));
+    if (customFields.length > 1) {
+      setCustomFields((prevFields) => prevFields.filter((_, i) => i !== index));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
 
-    const customFieldsObject = customFields.reduce((acc, field) => {
-      if (field.key.trim()) {
-        acc[field.key.trim()] = field.value.trim();
-      }
-      return acc;
-    }, {} as Record<string, string>);
+    const customFieldsObject = customFields.reduce(
+      (acc, field) => {
+        if (field.key.trim()) {
+          acc[field.key.trim()] = field.value.trim();
+        }
+        return acc;
+      },
+      {} as Record<string, string>,
+    );
+
+    if (Object.keys(customFieldsObject).length === 0) {
+      alert("חובה למלא לפחות מאפיין נוסף אחד (כולל שם המאפיין).");
+      return;
+    }
+
+    setIsLoading(true);
 
     const payload: ComplianceDataPayload = {
       businessSize,
@@ -57,9 +79,15 @@ const ComplianceForm = ({ onReportGenerated }: Props) => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      <form onSubmit={handleSubmit} className="bg-white shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4">
-        <FormHeader title="בדיקת תאימות רגולטורית" subtitle="הזן את נתוני העסק כדי לקבל דוח מותאם אישית" />
+    <div className="mx-auto w-full max-w-2xl">
+      <form
+        onSubmit={handleSubmit}
+        className="mb-4 rounded-xl bg-white px-8 pt-6 pb-8 shadow-2xl"
+      >
+        <FormHeader
+          title="בדיקת תאימות רגולטורית"
+          subtitle="הזן את נתוני העסק כדי לקבל דוח מותאם אישית"
+        />
         <StaticFields
           businessSize={businessSize}
           seatingCapacity={seatingCapacity}
