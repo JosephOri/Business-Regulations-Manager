@@ -25,7 +25,7 @@ const StaticFields = ({
           id="size"
           value={businessSize}
           onChange={(e) => onSizeChange(Number(e.target.value))}
-          className="w-full appearance-none rounded border px-4 py-3 text-right leading-tight text-gray-700 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          className="rtl w-full appearance-none rounded border px-4 py-3 text-right leading-tight text-gray-700 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
           required
         />
       </div>

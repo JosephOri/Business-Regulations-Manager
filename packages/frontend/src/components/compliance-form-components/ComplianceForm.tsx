@@ -79,7 +79,7 @@ const ComplianceForm = ({ onReportGenerated }: Props) => {
   };
 
   return (
-    <div className="mx-auto w-full max-w-2xl">
+    <div className="mx-auto w-full max-w-4xl">
       <form
         onSubmit={handleSubmit}
         className="mb-4 rounded-xl bg-white px-8 pt-6 pb-8 shadow-2xl"

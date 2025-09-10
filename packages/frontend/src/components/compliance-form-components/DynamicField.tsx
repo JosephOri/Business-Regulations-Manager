@@ -16,7 +16,7 @@ const DynamicField = ({
   onRemoveField,
 }: Props) => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-row-reverse items-center gap-2">
       <input
         type="text"
         placeholder="שם המאפיין (לדוגמה: הגשת בשר)"
@@ -29,7 +29,7 @@ const DynamicField = ({
         placeholder="ערך (לדוגמה: העסק מגיש בשר עם כשרות בדץ)"
         value={field.value}
         onChange={(e) => onFieldChange(index, "value", e.target.value)}
-        className="flex-1 rounded border px-3 py-2 text-right text-gray-700 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        className="rtl flex-1 rounded border px-3 py-2 text-right text-gray-700 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
       />
       {canBeRemoved ? (
         <button

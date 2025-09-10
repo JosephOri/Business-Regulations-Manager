@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import { ReportPage } from "./components/ReportPage";
+import ReportPage from "./components/ReportPage";
 import ComplianceForm from "./components/compliance-form-components/ComplianceForm";
 
 function AppContent() {
@@ -13,9 +13,12 @@ function AppContent() {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <Routes>
-        <Route path="/" element={<ComplianceForm onReportGenerated={handleReportGenerated} />} />
+        <Route
+          path="/"
+          element={<ComplianceForm onReportGenerated={handleReportGenerated} />}
+        />
         <Route path="/report" element={<ReportPage reportContent={report} />} />
       </Routes>
     </div>
