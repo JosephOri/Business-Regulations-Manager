@@ -1,3 +1,8 @@
+# מערכת הערכת רישוי עסקים מבוססת AI
+מערכת זו נועדה לסייע לבעלי עסקים, בדגש על מסעדות, להבין את דרישות הרישוי הרלוונטיות לעסק שלהם. המשתמש מזין פרטים בסיסיים על העסק בשאלון דיגיטלי, והמערכת, באמצעות מודל שפה (LLM), מפיקה דוח מותאם אישית המסכם את הרגולציות החלות עליו בשפה פשוטה וברורה.
+
+הפרויקט מבוסס על ארכיטקטורת monorepo המנוהלת על ידי pnpm workspace, ומדגים שילוב של פיתוח Web קלאסי עם טכנולוגיית Retrieval-Augmented Generation (RAG) כדי לספק תשובות מדויקות המבוססות על מסמך חוקים ספציפי.
+
 # PNPM Workspace with React + Express (TypeScript)
 
 A full-stack TypeScript application using pnpm workspaces with React frontend and Express backend.
@@ -15,7 +20,7 @@ A full-stack TypeScript application using pnpm workspaces with React frontend an
 
 ## Technologies Used
 
-- **Frontend**: React 19 + Vite + TypeScript
+- **Frontend**: React + Vite + TypeScript
 - **Backend**: Express + TypeScript
 - **Package Manager**: PNPM with workspaces
 - **Development**: Concurrently for running both servers
