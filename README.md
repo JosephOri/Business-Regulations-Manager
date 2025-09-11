@@ -1,7 +1,7 @@
 # מערכת הערכת רישוי עסקים מבוססת AI
 מערכת זו נועדה לסייע לבעלי עסקים, בדגש על מסעדות, להבין את דרישות הרישוי הרלוונטיות לעסק שלהם. המשתמש מזין פרטים בסיסיים על העסק בשאלון דיגיטלי, והמערכת, באמצעות מודל שפה (LLM), מפיקה דוח מותאם אישית המסכם את הרגולציות החלות עליו בשפה פשוטה וברורה.
 
-הפרויקט מבוסס על ארכיטקטורת monorepo המנוהלת על ידי pnpm workspace, ומדגים שילוב של פיתוח Web קלאסי עם טכנולוגיית Retrieval-Augmented Generation (RAG) כדי לספק תשובות מדויקות המבוססות על מסמך חוקים ספציפי.
+הפרויקט מבוסס על ארכיטקטורת monorepo המנוהלת על ידי pnpm workspace, ומדגים שילוב של פיתוח Web קלאסי עם טכנולוגיית Retrieval-Augmented Generation (RAG) כדי לספק תשובות מדויקות המבוססות על מסמך חוקים ספציפי. הארכיטקטורה בקובץ ARCHITECTURE.md
 
 # PNPM Workspace with React + Express (TypeScript)
 
@@ -56,22 +56,6 @@ pnpm dev
 - Frontend: http://localhost:5173
 - Backend: http://localhost:3001
 
-### Build
-
-Build both frontend and backend:
-
-```bash
-pnpm build
-```
-
-### Production
-
-Start both applications in production mode:
-
-```bash
-pnpm start
-```
-
 ## env variables
 
 create .env file in the root directory with the following variables:
@@ -82,16 +66,4 @@ DEEPSEEK_API_KEY=your_deepseek_api_key
 
 POST /api/compliance/check
 
-## TypeScript Configuration
 
-Both frontend and backend are configured with strict TypeScript settings:
-
-- **Frontend**: Uses Vite's TypeScript plugin with React JSX
-- **Backend**: Uses ts-node for development and tsc for production builds
-
-## Development Features
-
-- Hot reload for both frontend and backend
-- Type checking during development
-- Source maps for debugging
-- CORS enabled for frontend-backend communication
