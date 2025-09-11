@@ -60,7 +60,9 @@ pnpm dev
 
 create .env file in the root directory with the following variables:
 
+```bash
 DEEPSEEK_API_KEY=your_deepseek_api_key
+```
 
 ## API Endpoints
 
