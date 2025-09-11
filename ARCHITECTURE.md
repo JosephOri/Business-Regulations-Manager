@@ -19,4 +19,4 @@
     |<br>
     | 6. Sends report back to Frontend<br>
     V<br>
-[React Frontend] --> Displays report & allows PDF download
+[React Frontend] --> Displays report 
