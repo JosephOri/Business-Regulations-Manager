@@ -1,16 +1,9 @@
-type Props = {
-  businessSize: number;
-  seatingCapacity: number;
-  onSizeChange: (value: number) => void;
-  onSeatingChange: (value: number) => void;
-};
+import { useComplianceFormStore } from "../../store/complianceFormStore";
 
-const StaticFields = ({
-  businessSize,
-  seatingCapacity,
-  onSizeChange,
-  onSeatingChange,
-}: Props) => {
+const StaticFields = () => {
+  const { businessSize, seatingCapacity, setBusinessSize, setSeatingCapacity } =
+    useComplianceFormStore();
+
   return (
     <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
       <div>
@@ -24,7 +17,7 @@ const StaticFields = ({
           type="number"
           id="size"
           value={businessSize}
-          onChange={(e) => onSizeChange(Number(e.target.value))}
+          onChange={(e) => setBusinessSize(Number(e.target.value))}
           className="rtl w-full appearance-none rounded border px-4 py-3 text-right leading-tight text-gray-700 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
           required
         />
@@ -40,7 +33,7 @@ const StaticFields = ({
           type="number"
           id="seating"
           value={seatingCapacity}
-          onChange={(e) => onSeatingChange(Number(e.target.value))}
+          onChange={(e) => setSeatingCapacity(Number(e.target.value))}
           className="w-full appearance-none rounded border px-4 py-3 text-right leading-tight text-gray-700 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
           required
         />

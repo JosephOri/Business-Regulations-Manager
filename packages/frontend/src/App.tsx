@@ -1,25 +1,30 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import ReportPage from "./components/ReportPage";
 import ComplianceForm from "./components/compliance-form-components/ComplianceForm";
+import { useComplianceFormStore } from "./store/complianceFormStore";
+import { useEffect } from "react";
 
 function AppContent() {
-  const [report, setReport] = useState<string>("");
   const navigate = useNavigate();
+  const reportText = useComplianceFormStore((state) => state.reportText);
+  const resetForm = useComplianceFormStore((state) => state.resetForm);
 
-  const handleReportGenerated = (reportText: string) => {
-    setReport(reportText);
-    navigate("/report");
-  };
+  useEffect(() => {
+    if (reportText) {
+      navigate("/report");
+    } else {
+      resetForm();
+    }
+  }, [reportText, navigate, resetForm]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <Routes>
+        <Route path="/" element={<ComplianceForm />} />
         <Route
-          path="/"
-          element={<ComplianceForm onReportGenerated={handleReportGenerated} />}
+          path="/report"
+          element={<ReportPage reportContent={reportText} />}
         />
-        <Route path="/report" element={<ReportPage reportContent={report} />} />
       </Routes>
     </div>
   );

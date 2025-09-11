@@ -1,5 +1,5 @@
 export type CustomField = {
-  id: number;
+  id: string;
   key: string;
   value: string;
 };
