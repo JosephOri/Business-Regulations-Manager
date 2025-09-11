@@ -9,7 +9,7 @@ function AppContent() {
 
   const handleReportGenerated = (reportText: string) => {
     setReport(reportText);
-    navigate("/report"); // נווט לעמוד הדוח לאחר קבלת התשובה
+    navigate("/report");
   };
 
   return (
