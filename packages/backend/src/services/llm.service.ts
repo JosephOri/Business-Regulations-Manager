@@ -5,7 +5,7 @@ const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 interface BusinessData {
   businessSize: number;
   seatingCapacity: number;
-  customFields: Record<string, string | number>;
+  customFields: Record<string, string | number | boolean>;
 }
 
 interface GenerateReportParams {
