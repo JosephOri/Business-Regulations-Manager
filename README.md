@@ -67,11 +67,15 @@ Start both applications in production mode:
 pnpm start
 ```
 
+## env variables
+
+create .env file in the root directory with the following variables:
+
+DEEPSEEK_API_KEY=your_deepseek_api_key
+
 ## API Endpoints
 
-- `GET /api/health` - Health check endpoint
-- `GET /api/users` - Returns sample user data
-- `POST /api/message` - Accepts and echoes back a message
+POST /api/compliance/check
 
 ## TypeScript Configuration
 
