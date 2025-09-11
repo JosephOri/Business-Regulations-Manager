@@ -1,4 +1,6 @@
-[User on Browser] <--> [React Frontend (index.html)]
+# ARCHITECTURE
+
+[User on Browser] <--> [React Frontend (index.html)] <br>
 |
 | (HTTP API Call: /api/check-compliance)
 V
