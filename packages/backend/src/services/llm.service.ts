@@ -1,19 +1,9 @@
 import OpenAI from "openai";
+import { GeneratedReportParams } from "../interfaces";
 
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 
-interface BusinessData {
-  businessSize: number;
-  seatingCapacity: number;
-  customFields: Record<string, string | number | boolean>;
-}
-
-interface GenerateReportParams {
-  businessData: BusinessData;
-  regulationsContext: string;
-}
-
-const buildPrompt = (data: GenerateReportParams): string => {
+const buildPrompt = (data: GeneratedReportParams): string => {
   const businessDetails = JSON.stringify(data.businessData, null, 2);
 
   return `
@@ -66,7 +56,7 @@ const buildPrompt = (data: GenerateReportParams): string => {
   `;
 };
 
-export const generateComplianceReport = async (params: GenerateReportParams): Promise<string> => {
+export const generateComplianceReport = async (params: GeneratedReportParams): Promise<string> => {
   if (!DEEPSEEK_API_KEY) {
     throw new Error("DeepSeek API key not found.");
   }

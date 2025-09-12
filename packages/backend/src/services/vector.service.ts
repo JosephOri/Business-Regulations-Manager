@@ -1,10 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
-
-interface VectorRecord {
-  content: string;
-  embedding: number[];
-}
+import { VectorRecord } from "../interfaces";
 
 let vectorStore: VectorRecord[] = [];
 

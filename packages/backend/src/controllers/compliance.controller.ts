@@ -2,18 +2,13 @@ import { Request, Response } from "express";
 import { pipeline, FeatureExtractionPipeline } from "@xenova/transformers";
 import { findRelevantChunks } from "../services/vector.service";
 import { generateComplianceReport } from "../services/llm.service";
+import { ComplianceRequestBody } from "../interfaces";
 
 let extractor: FeatureExtractionPipeline;
 (async () => {
   extractor = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2");
   console.log("Embedding model loaded for controller.");
 })();
-
-interface ComplianceRequestBody {
-  businessSize: number;
-  seatingCapacity: number;
-  customFields: Record<string, string | number>;
-}
 
 export const checkCompliance = async (req: Request, res: Response): Promise<void> => {
   try {
